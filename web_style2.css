@@ -158,7 +158,7 @@
     text-align: center; 
     } 
     .section-title span{ 
-    color:var(--main-color) 
+    color:white;
     }
     .about{
        background-image: url('pics/w5.jpg');
@@ -181,7 +181,7 @@
     color: var(--text-color); 
     } 
     .about .about-content .about-text h3 span{ 
-    color:var(--main-color); 
+    color:white; 
     align-content: center; 
     } 
     .about .about-content .about-text p{ 
@@ -378,13 +378,16 @@
     text-align: center; 
     } 
     .projects .section-title span{ 
-    color:var(--main-color) 
+    color:white;
     } 
     .projects{ 
     padding-bottom: 10rem;
     background-image: url(pics/w5.jpg); 
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    overflow: hidden;
     } 
     .projects h2{ 
     margin-bottom: 2rem; 
@@ -392,21 +395,26 @@
     } 
     .projects .project-container{ 
     display: grid; 
-    grid-template-columns: repeat(3,1fr); 
+    grid-template-columns: repeat(3, 1fr); 
     align-items: center; 
-    gap: 2.4rem; 
+    gap: 2.4rem;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
     } 
     .project-container .project-box{ 
     position: relative; 
     display: flex; 
     width: 100%;
-    height: 100%;
+    height: 300px;
     border-radius: 2rem; 
     box-shadow: 0 0 1rem var(--shadow-color); 
     overflow: hidden; 
     } 
     .project-box img{ 
-    width:100%; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: .5s ease; 
     } 
     .project-box:hover img{ 
@@ -534,81 +542,71 @@
     font-size: 2.4rem; 
     color: #333; 
     } 
-    @media (max-width: 1200px) {
-      .header {
-        padding: 15px 5%;
+    @media (max-width: 1440px) {
+      .projects .project-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding: 0 1.5rem;
       }
-      section {
-        padding: 120px 5%;
-      }
-      .home-content h1 {
-        font-size: 48px;
-      }
-      .home-content h4 {
-        font-size: 28px;
-      }
-      .home-content p {
-        font-size: 18px;
+      .project-container .project-box {
+        height: 280px;
       }
     }
-    @media (max-width: 992px) {
-      .navbar a {
-        font-size: 20px;
-        margin-right: 40px;
+    @media (max-width: 1024px) {
+      .header {
+        padding: 15px 2%;
       }
-      .home-content h1 {
-        font-size: 40px;
+      .container {
+        max-width: 98vw;
       }
-      .home-content h4 {
-        font-size: 24px;
+      .projects .project-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+        padding: 0 1.2rem;
       }
-      .home-content p {
-        font-size: 16px;
+      .project-container .project-box {
+        height: 260px;
+      }
+      .about .row-cont {
+        flex-direction: column;
+      }
+      .about .about-content .personal-info,
+      .about .about-content .skills {
+        max-width: 100%;
+        flex: 0 0 100%;
+      }
+    }
+    @media (max-width: 900px) {
+      .services .services-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .projects .project-container {
+        grid-template-columns: 1fr;
       }
     }
     @media (max-width: 768px) {
       .header {
-        padding: 15px 2%;
         flex-direction: column;
         align-items: flex-start;
+        padding: 10px 2%;
       }
       .logo {
         margin-bottom: 10px;
       }
       .navbar a {
-        font-size: 18px;
-        margin-right: 20px;
+        font-size: 16px;
+        margin-right: 10px;
       }
-      .home-content h1 {
-        font-size: 36px;
-      }
-      .home-content h4 {
-        font-size: 22px;
-      }
-      .home-content p {
-        font-size: 14px;
-      }
-      .home-content .socials a {
-        width: 3rem;
-        height: 3rem;
-        font-size: 1.6rem;
-        margin: 2rem 1rem 2.5rem 0;
-      }
-      .image {
-        width: 250px;
-        height: 200px;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      section {
-        padding: 100px 3%;
+      .home {
+        flex-direction: column;
+        padding: 60px 2%;
       }
       .home-content h1 {
         font-size: 28px;
       }
       .home-content h4 {
-        font-size: 18px;
+        font-size: 16px;
       }
       .home-content p {
         font-size: 12px;
@@ -620,18 +618,342 @@
         max-width: 100%;
         flex: 0 0 100%;
       }
-      .services-container {
-        flex-direction: column;
-        gap: 2rem;
-      }
       .services-box {
-        padding: 2rem 3rem;
-      }
-      .projects .project-container {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        padding: 2rem 1rem;
       }
       .contact form .inp-box input {
         width: 100%;
       }
+      .projects {
+        padding-bottom: 5rem;
+      }
+      .projects .project-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+      .project-container .project-box {
+        height: 240px;
+      }
+    }
+    @media (max-width: 576px) {
+      html {
+        font-size: 50%;
+      }
+      section {
+        padding: 60px 2%;
+      }
+      .header {
+        padding: 10px 2%;
+      }
+      .footer {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 2%;
+      }
+      .footer-text p {
+        font-size: 1.2rem;
+      }
+      .footer-icontop a {
+        font-size: 1.6rem;
+        padding: .6rem;
+      }
+      .projects {
+        padding-bottom: 4rem;
+      }
+      .projects .project-container {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 0 0.8rem;
+      }
+      .project-container .project-box {
+        height: 220px;
+      }
+    }
+    @media (max-width: 425px) {
+      .home-content h1 {
+        font-size: 20px;
+      }
+      .home-content h4 {
+        font-size: 12px;
+      }
+      .home-content p {
+        font-size: 10px;
+      }
+      .section-title h2 {
+        font-size: 24px;
+      }
+      .about .about-content .about-text h3 {
+        font-size: 16px;
+      }
+      .services-box h3 {
+        font-size: 1.6rem;
+      }
+      .services-box p {
+        font-size: 1.1rem;
+      }
+      .project-layer p {
+        font-size: 1.1rem;
+      }
+    }
+    @media (max-width: 375px) {
+      .header {
+        padding: 5px 1%;
+      }
+      .logo {
+        font-size: 18px;
+      }
+      .navbar a {
+        font-size: 12px;
+        margin-right: 5px;
+      }
+      .projects {
+        padding-bottom: 3rem;
+      }
+      .projects .project-container {
+        gap: 1rem;
+        padding: 0 0.5rem;
+      }
+      .project-container .project-box {
+        height: 200px;
+      }
+    }
+    /* Fluid images and containers */
+    img, .project-box img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    .container, .about .about-content, .services .services-container, .projects .project-container, .contact form {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+        from { transform: translateX(-100px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+        from { transform: translateX(100px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInUp {
+        from { transform: translateY(100px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    /* Apply animations to elements */
+    .home-content h1 {
+        animation: slideInLeft 1s ease-out;
+    }
+
+    .home-content h4 {
+        animation: slideInRight 1s ease-out 0.3s backwards;
+    }
+
+    .home-content p {
+        animation: slideInUp 1s ease-out 0.6s backwards;
+    }
+
+    .home-content .socials a {
+        animation: fadeIn 1s ease-out 0.9s backwards;
+    }
+
+    .home-content .socials a:hover {
+        animation: float 2s ease-in-out infinite;
+    }
+
+    .logo {
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .navbar a {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .navbar a:hover {
+        color: var(--main-color);
+        transform: translateY(-3px);
+    }
+
+    .navbar a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -6px;
+        left: 0;
+        background-color: var(--main-color);
+        transition: width 0.3s ease;
+    }
+
+    .navbar a:hover::after {
+        width: 100%;
+    }
+
+    .services-container .services-box {
+        animation: fadeIn 1s ease-out;
+        transition: all 0.4s ease;
+    }
+
+    .services-container .services-box:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 1rem 2rem var(--shadow-color);
+    }
+
+    .services-box i {
+        transition: all 0.4s ease;
+    }
+
+    .services-box:hover i {
+        transform: scale(1.2) rotate(360deg);
+        color: var(--main-color);
+    }
+
+    .project-box {
+        animation: fadeIn 1s ease-out;
+        transition: all 0.4s ease;
+    }
+
+    .project-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 2rem var(--shadow-color);
+    }
+
+    .project-layer {
+        transition: all 0.4s ease;
+    }
+
+    .project-layer a {
+        transition: all 0.4s ease;
+    }
+
+    .project-layer a:hover {
+        transform: scale(1.2) rotate(360deg);
+        background: var(--main-color);
+    }
+
+    .project-layer a:hover i {
+        color: var(--white-color);
+    }
+
+    .btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1rem var(--shadow-color);
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: 0.5s;
+    }
+
+    .btn:hover::before {
+        left: 100%;
+    }
+
+    .about .about-content .skills .progress .progress-in {
+        animation: slideInLeft 1s ease-out;
+    }
+
+    .contact form .inp-box input,
+    .contact form textarea {
+        transition: all 0.3s ease;
+    }
+
+    .contact form .inp-box input:focus,
+    .contact form textarea:focus {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1rem var(--shadow-color);
+    }
+
+    .footer-icontop a {
+        animation: float 2s ease-in-out infinite;
+    }
+
+    /* Add animation classes for scroll reveal */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Add hover effect to skill bars */
+    .about .about-content .skills .skill-item .progress {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about .about-content .skills .skill-item .progress::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        animation: progressShine 2s infinite;
+    }
+
+    @keyframes progressShine {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    /* Add animation to section titles */
+    .section-title h2 {
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-title h2::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--main-color);
+        animation: titleUnderline 1s ease-out forwards;
+    }
+
+    @keyframes titleUnderline {
+        to { width: 100%; }
     }
