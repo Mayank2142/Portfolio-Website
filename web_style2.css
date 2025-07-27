@@ -41,6 +41,13 @@ body {
     color: var(--text-color);
     line-height: 1.6;
 }
+*,*::before,*::after,body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 /* Glassmorphism utility classes */
 .glass {
@@ -163,7 +170,33 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
 }
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
 
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    margin: 3px 0;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
 /* Enhanced Sections */
 section {
     min-height: 100vh;
@@ -774,9 +807,19 @@ section {
 }
 
 .project-box:hover img {
-    transform: scale(1.1);
-    filter: blur(2px);
+  opacity: 0.6;
 }
+
+.project-box:hover::after {
+  content: "View Project";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2rem;
+}
+
 
 .project-box .project-layer {
     position: absolute;
@@ -1270,3 +1313,130 @@ section {
     .navbar a:hover,
     .btn:hover,
     .services-box:hover {
+        border: 2px solid var(--main-color);
+    }
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* Print styles */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    .header,
+    .footer,
+    .socials,
+    .btn {
+        display: none !important;
+    }
+    
+    section {
+        page-break-inside: avoid;
+        padding: 1rem;
+    }
+}
+
+/* Additional utility classes */
+.text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card {
+    background: var(--glass-dark);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+}
+
+.pulse-border {
+    position: relative;
+    overflow: hidden;
+}
+
+.pulse-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+    animation: pulse-slide 2s infinite;
+}
+
+@keyframes pulse-slide {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Focus styles for accessibility */
+*:focus {
+    outline: 2px solid var(--main-color);
+    outline-offset: 2px;
+}
+
+.btn:focus,
+.navbar a:focus,
+input:focus,
+textarea:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+/* Loading animation */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Smooth scroll behavior enhancement */
+html {
+    scroll-padding-top: 100px;
+}
+
+/* Selection styles */
+::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: var(--white-color);
+}
+
+::-moz-selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: var(--white-color);
+}
