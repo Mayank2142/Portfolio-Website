@@ -807,7 +807,6 @@ section {
 }
 
 .project-box:hover::after {
-  content: "View Project";
   position: absolute;
   top: 50%;
   left: 50%;
