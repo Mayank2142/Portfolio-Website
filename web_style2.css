@@ -408,31 +408,155 @@ section {
     margin-top: 6rem;
 }
 
+.about .about-content .personal-info {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-top: 4rem;
+}
+
 .about .about-content .personal-info .info-item {
     margin-bottom: 2rem;
-    padding: 2rem;
+    padding: 2.5rem;
     background: var(--glass-dark);
     border-radius: var(--border-radius);
     transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 80px;
+    display: flex;
+    align-items: center;
 }
 
 .about .about-content .personal-info .info-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.3);
 }
 
 .about .about-content .personal-info .info-item p {
     font-weight: 600;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: var(--text-color);
-    display: flex;
-    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
     align-items: center;
+    line-height: 1.4;
 }
 
-.about .about-content .personal-info .info-item p span {
+.about .about-content .personal-info .info-item p .label {
+    font-weight: 700;
+    color: var(--main-color);
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    position: relative;
+}
+
+.about .about-content .personal-info .info-item p .label::after {
+    content: ':';
+    margin-left: 4px;
+}
+
+.about .about-content .personal-info .info-item p .value {
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.7rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.5;
+}
+
+/* Specific styling for different info types */
+.about .about-content .personal-info .info-item.email p .value {
+    color: var(--accent-color);
+    font-family: 'Courier New', monospace;
+    font-size: 1.6rem;
+}
+
+.about .about-content .personal-info .info-item.degree p .value {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.7rem;
+    line-height: 1.6;
+}
+
+.about .about-content .personal-info .info-item.phone p .value {
+    color: var(--secondary-color);
+    font-family: 'Courier New', monospace;
+}
+
+.about .about-content .personal-info .info-item.location p .value {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Icon styling for info items */
+.about .about-content .personal-info .info-item::before {
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--gradient-primary);
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.about .about-content .personal-info .info-item:hover::before {
+    opacity: 1;
+}
+
+/* Add icons to info items */
+.about .about-content .personal-info .info-item.email .label::before {
+    content: '✉';
+    margin-right: 8px;
+    font-size: 1.4rem;
+}
+
+.about .about-content .personal-info .info-item.degree .label::before {
+    content: '🎓';
+    margin-right: 8px;
+    font-size: 1.4rem;
+}
+
+.about .about-content .personal-info .info-item.phone .label::before {
+    content: '📱';
+    margin-right: 8px;
+    font-size: 1.4rem;
+}
+
+.about .about-content .personal-info .info-item.location .label::before {
+    content: '📍';
+    margin-right: 8px;
+    font-size: 1.4rem;
+}
+
+.about .about-content .personal-info .info-item.birthday .label::before {
+    content: '🎂';
+    margin-right: 8px;
+    font-size: 1.4rem;
+}
+
+.about .about-content .personal-info .info-item.website .label::before {
+    content: '🌐';
+    margin-right: 8px;
+    font-size: 1.4rem;
+}
+
+.about .about-content .personal-info .info-item.age .label::before {
+    content: '🔢';
+    margin-right: 8px;
+    font-size: 1.4rem;
+}
+
+.about .about-content .personal-info .info-item.freelance .label::before {
+    content: '💼';
+    margin-right: 8px;
+    font-size: 1.4rem;
 }
 
 /* Enhanced Skills Section */
@@ -910,6 +1034,21 @@ section {
         grid-template-columns: 1fr;
         gap: 4rem;
     }
+    .about .about-content .personal-info .info-item p {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: left;
+    }
+    
+    .about .about-content .personal-info .info-item p .label {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .about .about-content .personal-info .info-item p .value {
+        font-size: 1.6rem;
+        padding-left: 0;
+    }
     
     .services .services-container {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -934,6 +1073,22 @@ section {
     
     .home-content h1 {
         font-size: 4.5rem;
+    }
+    .about .about-content .personal-info .info-item {
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about .about-content .personal-info .info-item p {
+        font-size: 1.6rem;
+    }
+    
+    .about .about-content .personal-info .info-item p .label {
+        font-size: 1.4rem;
+    }
+    
+    .about .about-content .personal-info .info-item p .value {
+        font-size: 1.5rem;
     }
     
     .home-content h4 {
@@ -962,7 +1117,17 @@ section {
     section {
         padding: 120px 3% 60px;
     }
+    .about .about-content .personal-info .info-item {
+        padding: 1.5rem;
+    }
     
+    .about .about-content .personal-info .info-item p .label {
+        font-size: 1.3rem;
+    }
+    
+    .about .about-content .personal-info .info-item p .value {
+        font-size: 1.4rem;
+    }
     .home-content h1 {
         font-size: 3.5rem;
     }
