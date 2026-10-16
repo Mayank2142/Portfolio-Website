@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { projects } from '@portfolio/core';
 import { useQuietMotion, useCompactMotion } from './experience-motion';
 import { HelmetArtwork } from './helmet-artwork';
+import { assetPath } from './asset-path';
 
 const selection = projects.filter((project) => project.featured);
 const labels = ['Sentinel', 'CineBook', 'Helmet', 'CampusMate'];
@@ -55,7 +56,7 @@ export function HeroShowcase() {
             >
               <Link to={`/projects/${project.slug}`} className="showcase-preview" aria-label={`Preview ${project.name}`}>
                 {project.slug === 'smart-helmet' ? <HelmetArtwork /> : (
-                  <img src={project.image} alt={project.imageAlt || project.name} width={1200} height={800}
+                  <img src={assetPath(project.image!)} alt={project.imageAlt || project.name} width={1200} height={800}
                     className={project.slug === 'campusmate' ? 'showcase-phone' : ''}
                     loading="eager" fetchPriority={active === 0 ? 'high' : 'auto'} />
                 )}

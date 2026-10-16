@@ -4,6 +4,7 @@ import { projects } from '@portfolio/core';
 import { PageMeta, Reveal } from '../components/ui';
 import { ScreenshotViewer } from '../components/screenshot-viewer';
 import { HelmetArtwork } from '../components/helmet-artwork';
+import { assetPath } from '../components/asset-path';
 import { CaseNavigation } from '../components/case-navigation';
 export function loader({ params }: { params: { slug?: string } }) {
   const project = projects.find((p) => p.slug === params.slug);
@@ -47,7 +48,7 @@ export default function ProjectDetail() {
       {p.slug === 'smart-helmet' && <HelmetArtwork detail />}
       {p.image && (
         <ScreenshotViewer
-          src={p.image}
+          src={assetPath(p.image)}
           alt={p.imageAlt || p.name}
           phone={p.slug === 'campusmate'}
         />

@@ -7,6 +7,7 @@ import { useQuietMotion, useCompactMotion } from './experience-motion';
 import { motionTokens } from './motion-system';
 import { HelmetArtwork } from './helmet-artwork';
 import { HoverWord } from './hover-word';
+import { assetPath } from './asset-path';
 const MotionLink = motion.create(Link);
 export function Reveal({
   children,
@@ -116,7 +117,7 @@ export function ProjectCard({ project, compact = false }: { project: Project; co
           <HelmetArtwork />
         ) : project.image ? (
           <motion.img
-            src={project.image}
+            src={assetPath(project.image)}
             alt={project.imageAlt || project.name}
             loading="lazy"
             width={1200}
@@ -198,7 +199,7 @@ export function PageMeta(title: string, description: string, image = 'portfolio'
     { property: 'og:title', content: `${title} | Mayank Gupta` },
     { property: 'og:description', content: description },
     { property: 'og:type', content: 'website' },
-    { property: 'og:image', content: `/social/${image}.png` },
+    { property: 'og:image', content: `${import.meta.env.VITE_STATIC_CONTACT === 'email' ? 'https://mayank2142.github.io' : ''}${assetPath(`/social/${image}.png`)}` },
     { name: 'twitter:card', content: 'summary_large_image' },
   ];
 }

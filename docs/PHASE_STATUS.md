@@ -7,6 +7,8 @@
 
 This file is updated after verification. A local preview is not a verified public deployment.
 
+The GitHub repository is pushed. Its GitHub Pages source currently publishes the repository root; a dedicated static React build is prepared for that root. Verify the Pages URL after the Pages workflow completes. This is the frontend deployment; Express contact delivery remains a separate hosting task.
+
 Deployment handoff now includes a Dockerfile, a GitHub Actions verification workflow, and `DEPLOYMENT.md`. Docker's engine is not running on this workstation; the image and live PostgreSQL remain unverified. Public hosting and real email delivery still require the final origin, managed database connection, and verified sender/provider credentials. These are the remaining external requirements, not completed deployments.
 
 Local preview: `http://localhost:3001`. To restart it, run `npm start` with `APP_ORIGIN=http://localhost:3001`. See `VERIFICATION.md` for the checks and production limits.

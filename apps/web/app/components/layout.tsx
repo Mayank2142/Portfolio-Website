@@ -16,6 +16,7 @@ import { profile, projects } from '@portfolio/core';
 import { HoverWord } from './hover-word';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 import { motionTokens } from './motion-system';
+import { assetPath } from './asset-path';
 import { useQuietMotion } from './experience-motion';
 
 export function Header() {
@@ -109,7 +110,7 @@ export function Header() {
             >
               {light ? <Moon size={17} /> : <Sun size={17} />}
             </button>
-            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="resume-link">
+            <a href={assetPath('/resume.pdf')} target="_blank" rel="noreferrer" className="resume-link">
               Resume <ArrowUpRight size={14} />
             </a>
             <button
@@ -232,9 +233,9 @@ export function Footer() {
         <a href={profile.linkedin} aria-label="LinkedIn" target="_blank" rel="noreferrer">
           <Linkedin size={18} />
         </a>
-        <a href="/#main" className="back-top">
+        <Link to="/#main" className="back-top">
           Back to top ↑
-        </a>
+        </Link>
       </div>
     </footer>
   );

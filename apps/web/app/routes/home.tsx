@@ -27,6 +27,7 @@ import { Magnetic } from '../components/magnetic';
 import { HeroSignature } from '../components/hero-signature';
 import { MilestoneCard } from '../components/milestone-card';
 import { HoverWord } from '../components/hover-word';
+import { assetPath } from '../components/asset-path';
 
 export const meta = () =>
   PageMeta(
@@ -59,7 +60,7 @@ export default function Home() {
               </Link>
             </Magnetic>
             <Magnetic>
-              <a href="/resume.pdf" download="Mayank-Gupta-Resume.pdf" className="button secondary">
+              <a href={assetPath('/resume.pdf')} download="Mayank-Gupta-Resume.pdf" className="button secondary">
                 Download resume <ArrowDown size={17} />
               </a>
             </Magnetic>
@@ -356,7 +357,7 @@ export default function Home() {
             applications. Two internships and my Mozilla club responsibilities have shaped how I
             build and collaborate.
           </p>
-          <a className="text-link" href="/resume.pdf" target="_blank" rel="noreferrer">
+          <a className="text-link" href={assetPath('/resume.pdf')} target="_blank" rel="noreferrer">
             View my resume <ArrowUpRight size={15} />
           </a>
         </div>

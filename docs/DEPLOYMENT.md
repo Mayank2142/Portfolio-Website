@@ -1,5 +1,15 @@
 # Production handoff
 
+## Current public frontend
+
+GitHub Pages publishes this repository's root at `https://mayank2142.github.io/Portfolio-Website/`. Run `npm run build:pages`, then commit and push the generated root `index.html`, `projects/`, assets, `404.html`, and sitemap. The build sets the React Router basename to `/Portfolio-Website` and opens a drafted email for contact submissions. This static deployment has no `/api` endpoint or server-side message storage; the Express integration below is for full-stack hosting.
+
+## Render Blueprint
+
+`render.yaml` provisions a free Node web service and free PostgreSQL in Singapore. The free database expires after 30 days and the web service sleeps on inactivity. This is a preview configuration; upgrade the database for durable production hosting. Migrations run once in the build command because the free web plan has no pre-deploy command. On a paid plan, move migration to `preDeployCommand: npm run db:deploy`. Render's assigned external URL supplies the public origin unless `APP_ORIGIN` is set for a custom domain.
+
+Email defaults to preview mode and saves submissions without sending external email. Configure the verified Resend sender variables below before enabling real delivery.
+
 The React site and Express API are one deployable Node application. The Dockerfile retains Prisma tooling so migration commands can run as a release step. It uses a non-root runtime and excludes local contacts, secrets, Git history, and preview artifacts from the build context. Docker execution has not been verified on this workstation.
 
 ## Host configuration

@@ -11,7 +11,7 @@ const store = await createStore();
 const webDir = path.join(root, 'apps/web/build/client');
 const app = createApp(store, {
   webDir,
-  origin: process.env.APP_ORIGIN || 'http://localhost:5173',
+  origin: process.env.APP_ORIGIN || process.env.RENDER_EXTERNAL_URL || 'http://localhost:5173',
   emailMode: process.env.EMAIL_MODE || 'preview',
 });
 const server = app.listen(Number(process.env.PORT || 3001), process.env.HOST || '127.0.0.1', () =>

@@ -13,6 +13,7 @@ import { ExperienceMotion, ReadingProgress, PageSurface } from './components/exp
 import { useEffect, useRef } from 'react';
 import { Header, Footer } from './components/layout';
 import { CursorBubble } from './components/cursor-bubble';
+import { assetPath } from './components/asset-path';
 import './styles.css';
 import './refinements.css';
 import './modern.css';
@@ -25,7 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0c0f12" />
-        <link rel="icon" href="/favicon.svg" />
+        <link rel="icon" href={assetPath('/favicon.svg')} />
         <Meta />
         <Links />
         <script
@@ -84,7 +85,7 @@ export function ErrorBoundary() {
           : 'A little interruption.'}
       </h1>
       <p>You can still reach me at mayankgupta17may@gmail.com.</p>
-      <a className="button" href="/">
+      <a className="button" href={assetPath('/')}>
         Back to home
       </a>
     </div>

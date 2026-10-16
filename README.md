@@ -35,7 +35,7 @@ Configure `NODE_ENV=production`, `HOST=0.0.0.0`, the platform's `PORT`, `APP_ORI
 
 For external email, configure `EMAIL_MODE=resend`, `RESEND_API_KEY`, a verified `EMAIL_FROM`, and `EMAIL_TO`. Secrets are server-only. Acceptance (`202`) means the message is saved, not inbox delivery. The outbox uses leases, idempotency keys and bounded retries. Configure external monitoring and a contact-data retention schedule before a public launch.
 
-Express serves the pre-rendered route HTML and assets, `/api`, canonical tags, and a sitemap based on the configured origin. Unknown routes return HTTP 404. No account purchase or public deployment is performed by this checkout itself.
+Express serves the pre-rendered route HTML and assets, `/api`, canonical tags, and a sitemap based on the configured origin. Unknown routes return HTTP 404. The GitHub Pages build serves the React frontend at `https://mayank2142.github.io/Portfolio-Website/`; on that static host, the contact form opens a drafted email. The Express contact API requires a separate Node/PostgreSQL host.
 
 ## Content and assets
 
@@ -52,4 +52,6 @@ See `docs/PHASE_STATUS.md` for progress and remaining production checks.
 
 The interface uses an editorial visual system with warm paper/light and botanical ink/dark themes, large mixed typography, and asymmetric project layouts. A layered hero showcase previews four real projects, with spring transitions, pointer tilt, and Left/Right/Home/End keyboard navigation. The page-wide cursor bubble magnifies the hero name and becomes transparent over other content. Scroll entrances, animated milestones, and the reading-progress line complete the motion system. Operating-system reduced-motion preferences are respected. The skills explorer also supports keyboard navigation and links each discipline to a real case study.
 
-Production container setup and release checks are documented in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). The prepared GitHub Actions workflow runs build, typecheck, and tests once pushed. Public deployment and real email delivery require host configuration.
+Production container setup and release checks are documented in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). The GitHub Actions workflow runs build, typecheck, and tests on pushes. Full-stack deployment and real email delivery require host configuration.
+
+Run `npm run build:pages` and commit its root-level output to update the existing GitHub Pages deployment. This builds with the repository subpath and a mailto contact fallback. Full-stack production and automatic email delivery still require the host configuration in `docs/DEPLOYMENT.md`.

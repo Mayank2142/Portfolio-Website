@@ -37,6 +37,13 @@ export function Contact() {
       form.current?.querySelector<HTMLInputElement>(`[name="${field}"]`)?.focus();
       return;
     }
+    if (import.meta.env.VITE_STATIC_CONTACT === 'email') {
+      const subject = encodeURIComponent(parsed.data.subject);
+      const body = encodeURIComponent(`${parsed.data.message}\n\nFrom: ${parsed.data.name} <${parsed.data.email}>`);
+      window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+      setStatus('Your email app opened with a draft. Send it there to reach me.');
+      return;
+    }
     setPending(true);
     try {
       const response = await fetch('/api/contact', {
@@ -55,7 +62,7 @@ export function Contact() {
       }
       setStatus(
         result.mode === 'preview'
-          ? 'Saved locally for preview. Email delivery is not enabled in this environment. Please email me directly for real enquiries.'
+          ? 'Saved for preview. Email delivery is not enabled in this environment. Please email me directly for real enquiries.'
           : 'Message received for delivery. Thanks for reaching out.',
       );
       form.current?.reset();
