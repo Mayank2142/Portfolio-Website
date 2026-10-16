@@ -14,6 +14,7 @@
     "dev": "concurrently -k -n web,api -c cyan,green \"npm run dev -w @portfolio/web\" \"npm run dev -w @portfolio/api\"",
     "build": "npm run generate -w @portfolio/api && npm run build -w @portfolio/web && npm run build -w @portfolio/api",
     "build:pages": "node scripts/build-pages.mjs",
+    "build:vercel": "node scripts/build-vercel.mjs",
     "typecheck": "npm run typecheck -w @portfolio/web && npm run typecheck -w @portfolio/api",
     "test": "vitest run",
     "start": "node apps/api/dist/server.js",

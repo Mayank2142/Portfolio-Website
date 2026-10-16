@@ -199,7 +199,7 @@ export function PageMeta(title: string, description: string, image = 'portfolio'
     { property: 'og:title', content: `${title} | Mayank Gupta` },
     { property: 'og:description', content: description },
     { property: 'og:type', content: 'website' },
-    { property: 'og:image', content: `${import.meta.env.VITE_STATIC_CONTACT === 'email' ? 'https://mayank2142.github.io' : ''}${assetPath(`/social/${image}.png`)}` },
+    { property: 'og:image', content: `${import.meta.env.VITE_PUBLIC_ORIGIN || (import.meta.env.BASE_URL === '/Portfolio-Website/' ? 'https://mayank2142.github.io' : '')}${assetPath(`/social/${image}.png`)}` },
     { name: 'twitter:card', content: 'summary_large_image' },
   ];
 }
