@@ -1,0 +1,12 @@
+node_modules
+**/node_modules
+**/build
+**/dist
+**/.react-router
+.git
+.env
+.env.*
+.data
+output
+backups
+*.zip

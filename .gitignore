@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+.react-router/
+.data/
+.env
+.env.*
+!.env.example
+apps/api/src/generated/
+coverage/
+*.log
+output/

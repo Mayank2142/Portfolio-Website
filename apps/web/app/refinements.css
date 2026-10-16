@@ -1,0 +1,1156 @@
+/* Theme, type, and motion refinements. Reference provenance: docs/DESIGN_REFERENCES.md. */
+:root {
+  --bg: #0c1114;
+  --surface: #131c21;
+  --surface2: #1a262d;
+  --text: #f3f6f5;
+  --muted: #b3c0c5;
+  --subtle: #a2b2ba;
+  --line: #34464e;
+  --accent: #8bf0c8;
+  --accent-ink: #11251d;
+  --error: #ffb59e;
+  --header: rgb(12 17 20 / 94%);
+}
+:root[data-theme='light'] {
+  --bg: #f7f8f4;
+  --surface: #edf2ec;
+  --surface2: #ffffff;
+  --text: #17231f;
+  --muted: #40534c;
+  --subtle: #4c6158;
+  --line: #c3d0c6;
+  --accent: #09634e;
+  --accent-ink: #ffffff;
+  --error: #9e3527;
+  --header: rgb(247 248 244 / 95%);
+}
+body {
+  font-size: 18px;
+}
+.hero {
+  overflow: visible;
+}
+.canvas-surround::before {
+  inset: -30px -12px;
+}
+.page-enter {
+  animation: none;
+}
+.hero {
+  grid-template-columns: 1.3fr 1fr;
+  gap: 64px;
+  padding-block: 64px 72px;
+}
+.hero h1.hero-name {
+  font-size: clamp(58px, 6.7vw, 88px);
+  line-height: 1.07;
+  letter-spacing: -0.06em;
+  margin-bottom: 28px;
+}
+.hero-greeting {
+  display: block;
+  font-size: 24px;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.name-mask {
+  display: inline-block;
+  overflow: clip;
+  vertical-align: bottom;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.name-word {
+  display: inline-block;
+  animation: name-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.name-mask:last-child .name-word {
+  animation-delay: 0.12s;
+}
+.name-accent {
+  color: var(--accent);
+}
+.hero-copy > * {
+  animation-name: copy-reveal;
+}
+.hero-copy > h1 {
+  animation: none;
+}
+.hero-description {
+  font-size: 19px;
+  line-height: 1.75;
+  max-width: 550px;
+}
+.hero-label,
+.hero-bottom .mono {
+  font-size: 13px;
+  color: var(--muted);
+}
+.label-divider {
+  color: var(--muted);
+}
+.search-trigger span {
+  font-size: 12px;
+}
+.experience-metrics span {
+  font-size: 14px;
+}
+.coding-panel .eyebrow,
+.site-footer .mono,
+.copy-feedback {
+  font-size: 13px;
+}
+html[data-theme-changing] *,
+html[data-theme-changing] *::before,
+html[data-theme-changing] *::after {
+  transition: none !important;
+}
+.hero-socials,
+.desktop-nav a,
+.resume-link,
+.text-link {
+  font-size: 16px;
+}
+.hero-socials {
+  gap: 24px;
+}
+.button,
+.hero-buttons .button {
+  font-size: 16px;
+  min-height: 50px;
+  padding: 14px 20px;
+  gap: 14px;
+}
+.magnetic-control {
+  display: inline-flex;
+  max-width: 100%;
+}
+.button.primary {
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+.button.secondary {
+  color: var(--text);
+  border-color: var(--line);
+  background: var(--surface);
+}
+.button:hover {
+  box-shadow: 0 8px 28px rgb(0 0 0 / 9%);
+}
+.canvas-top {
+  font-size: 12px;
+}
+.layer-node strong {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+.layer-node small,
+.canvas-bottom p {
+  font-size: 15px;
+  color: var(--muted);
+}
+.node-number {
+  font-size: 12px;
+  color: var(--subtle);
+}
+.node-icon {
+  color: var(--accent);
+}
+.canvas-bottom .text-link {
+  font-size: 14px;
+}
+.system-canvas {
+  border-color: var(--line);
+}
+.section {
+  padding-block: 80px;
+}
+h2 {
+  font-size: clamp(32px, 3.8vw, 48px);
+}
+.section-description,
+.project-info > p,
+.experience-details p,
+.leadership-intro p,
+.leadership-timeline p:not(.mono),
+.achievement-item > p,
+.about-copy > p:not(.eyebrow),
+.contact-copy > p:not(.eyebrow),
+.skill-content p:not(.eyebrow),
+.case-body p:not(.eyebrow),
+.evidence-list,
+.page-heading > p:not(.eyebrow),
+.case-description {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.eyebrow,
+.project-index,
+.credential-issuer,
+.credential-date,
+.experience-date,
+.leadership-timeline .mono,
+.leadership-intro > .mono,
+.achievement-item > .mono,
+.education-card small,
+.library-note,
+.filter-bar > .mono,
+.case-body .eyebrow,
+.case-sidebar .eyebrow,
+.about-copy > p.eyebrow,
+.contact-copy > p.eyebrow {
+  font-size: 13px;
+  color: var(--muted);
+}
+.eyebrow {
+  letter-spacing: 0.08em;
+}
+.project-info h3 {
+  font-size: 28px;
+}
+.experience-name h3,
+.credential-item h3 {
+  font-size: 23px;
+}
+.experience-name > span {
+  font-size: 16px;
+  color: var(--muted);
+}
+.tags span,
+.filter-bar button,
+.profile-link {
+  font-size: 14px;
+  color: var(--text);
+}
+.tags span {
+  background: var(--surface);
+  border-color: var(--line);
+  padding: 5px 10px;
+}
+.project-visual {
+  height: 330px;
+  padding: 24px;
+  border-radius: 16px;
+  background-color: var(--surface);
+}
+.project-card:hover {
+  transform: none;
+}
+.project-visual > img {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.project-visual > .phone-preview {
+  height: 100%;
+  min-height: 100%;
+  object-fit: contain;
+  padding-inline: 20px;
+}
+.project-visual:after {
+  display: none;
+}
+.project-overlay {
+  justify-content: flex-end;
+  padding: 20px;
+  background: none;
+  pointer-events: none;
+}
+.round-arrow {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.project-generated {
+  height: 100%;
+}
+.project-generated > .mono {
+  color: var(--muted);
+  font-size: 12px;
+}
+.project-visual .helmet-artwork {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+.project-visual .helmet-drawing {
+  height: auto;
+  flex: 1;
+  min-height: 0;
+}
+.helmet-artwork {
+  background-color: #111c24;
+}
+.helmet-pipeline {
+  flex-shrink: 0;
+  padding-bottom: 20px;
+}
+.helmet-detail figcaption {
+  font-size: 15px;
+}
+.skill-selection {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+  border-bottom: 3px solid var(--accent);
+  z-index: -1;
+}
+.skills-tabs button {
+  position: relative;
+  isolation: isolate;
+  font-size: 16px;
+  color: var(--muted);
+}
+.skills-tabs button[aria-selected='true'] {
+  background: transparent;
+  border-bottom-color: transparent;
+  color: var(--text);
+}
+.skills-tabs button > span {
+  font-size: 12px;
+  opacity: 1;
+}
+.skill-content {
+  padding: 36px;
+}
+.skill-content h3 {
+  font-size: clamp(24px, 2.5vw, 34px);
+}
+.skill-symbol {
+  color: var(--accent);
+}
+.skill-content .eyebrow {
+  display: none;
+}
+.credential-item {
+  gap: 24px;
+  padding-block: 26px;
+}
+.credential-item > div {
+  min-width: 0;
+  flex: 1;
+}
+.credential-item h3 {
+  line-height: 1.45;
+  color: var(--text);
+  font-weight: 600;
+}
+.credential-action {
+  width: auto;
+  min-width: 92px;
+  min-height: 44px;
+  padding: 9px 12px;
+  gap: 7px;
+  align-items: center;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.credential-action:hover {
+  background: var(--surface);
+  border-color: var(--accent);
+}
+.credential-action svg {
+  width: 16px;
+}
+.credential-issuer {
+  letter-spacing: 0.035em;
+}
+.about-section {
+  display: block;
+}
+.about-copy {
+  max-width: 850px;
+}
+.about-copy h2 {
+  font-size: clamp(32px, 3.8vw, 48px);
+}
+.education-card strong {
+  font-size: 18px;
+}
+.education-card span {
+  font-size: 16px;
+}
+.coding-panel h3 {
+  font-size: 23px;
+}
+.coding-panel p:not(.eyebrow) {
+  font-size: 17px;
+  color: var(--muted);
+}
+.contact-copy h2 {
+  font-size: clamp(36px, 4vw, 54px);
+}
+.contact-section label {
+  font-size: 16px;
+}
+.contact-section input,
+.contact-section textarea {
+  font-size: 17px;
+  color: var(--text);
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+.field-error,
+.form-error {
+  color: var(--error);
+  font-size: 15px;
+}
+.field input[aria-invalid='true'],
+.field textarea[aria-invalid='true'] {
+  border-color: var(--error);
+}
+.form-status {
+  font-size: 15px;
+  color: var(--muted);
+}
+.form-status.form-error {
+  color: var(--error);
+}
+.case-sidebar > p:not(.eyebrow),
+.case-sidebar nav a {
+  font-size: 16px;
+  color: var(--muted);
+}
+.case-body .evidence-note {
+  font-size: 16px;
+}
+.architecture-flow strong {
+  font-size: 16px;
+}
+.site-footer p,
+.back-top {
+  font-size: 14px;
+  color: var(--muted);
+}
+:root[data-theme='light'] .valsco {
+  color: #145e7b;
+}
+:root[data-theme='light'] .krizpay {
+  color: #714295;
+}
+:root[data-theme='light'] .mozilla-mark {
+  color: #8b4c12;
+}
+:root[data-theme='light'] .accent-cyan {
+  --project-accent: #096169;
+}
+:root[data-theme='light'] .accent-mint {
+  --project-accent: #226e49;
+}
+:root[data-theme='light'] .accent-lavender {
+  --project-accent: #655096;
+}
+:root[data-theme='light'] .accent-peach {
+  --project-accent: #885026;
+}
+@keyframes name-reveal {
+  from {
+    transform: translateY(105%) rotate(2deg);
+  }
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+@keyframes copy-reveal {
+  from {
+    opacity: 1;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1100px) {
+  .hero {
+    gap: 36px;
+  }
+  .hero h1.hero-name {
+    font-size: 70px;
+  }
+  .desktop-nav {
+    gap: 20px;
+  }
+}
+@media (max-width: 800px) {
+  .hero {
+    padding-top: 40px;
+  }
+  .section {
+    padding-block: 64px;
+  }
+  .project-visual,
+  .compact .project-visual {
+    height: 300px;
+  }
+}
+@media (max-width: 600px) {
+  .header-actions > .resume-link {
+    display: none;
+  }
+  .experience-metrics {
+    display: grid;
+    width: 100%;
+    margin-left: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  body {
+    font-size: 17px;
+  }
+  .hero {
+    padding-block: 36px 48px;
+    gap: 28px;
+  }
+  .hero h1.hero-name {
+    font-size: clamp(46px, 13vw, 66px);
+  }
+  .hero-greeting {
+    font-size: 23px;
+    margin-bottom: 15px;
+  }
+  .hero-description {
+    font-size: 18px;
+  }
+  .hero-label {
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .magnetic-control,
+  .magnetic-control .button {
+    width: 100%;
+  }
+  .hero-buttons .button {
+    font-size: 16px;
+    justify-content: space-between;
+  }
+  .hero-socials {
+    font-size: 16px;
+  }
+  .canvas-surround {
+    padding-block: 18px;
+  }
+  .system-canvas {
+    padding: 20px;
+  }
+  .layer-node {
+    padding: 13px 12px;
+    gap: 12px;
+  }
+  .layer-node strong {
+    font-size: 17px;
+  }
+  .layer-node small {
+    font-size: 14px;
+  }
+  .node-number {
+    display: none;
+  }
+  .section {
+    padding-block: 56px;
+  }
+  .section-description,
+  .project-info > p,
+  .experience-details p,
+  .leadership-intro p,
+  .leadership-timeline p:not(.mono),
+  .achievement-item > p,
+  .about-copy > p:not(.eyebrow),
+  .contact-copy > p:not(.eyebrow),
+  .skill-content p:not(.eyebrow),
+  .case-body p:not(.eyebrow),
+  .evidence-list,
+  .page-heading > p:not(.eyebrow),
+  .case-description {
+    font-size: 17px;
+  }
+  .project-visual,
+  .compact .project-visual {
+    height: 270px;
+    padding: 18px;
+  }
+  .project-info h3 {
+    font-size: 26px;
+  }
+  .project-overlay {
+    padding: 12px;
+  }
+  .helmet-pipeline {
+    gap: 8px;
+    font-size: 12px;
+  }
+  .skills-tabs button {
+    font-size: 15px;
+    padding: 18px 14px;
+  }
+  .skill-content {
+    padding: 26px;
+    min-height: 360px;
+  }
+  .credential-item {
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .credential-item h3 {
+    font-size: 19px;
+  }
+  .credential-action {
+    min-width: 78px;
+    padding-inline: 9px;
+    font-size: 14px;
+  }
+  .credential-issuer,
+  .credential-date {
+    font-size: 12px;
+  }
+  .resume-link {
+    font-size: 13px;
+  }
+  .experience-name h3,
+  .leadership-timeline h3 {
+    font-size: 21px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .name-word,
+  .hero-copy > * {
+    animation: none;
+  }
+}
+html[data-motion='paused'] .name-word,
+html[data-motion='paused'] .hero-copy > * {
+  animation: none;
+}
+.section-heading > .text-link {
+  font-size: 16px;
+}
+.achievement-number span,
+.achievement-item:last-child .achievement-number span {
+  font-size: 16px;
+}
+.case-actions .button {
+  font-size: 16px;
+}
+.architecture-flow .mono,
+.decision > .mono,
+.zoom-badge {
+  font-size: 13px;
+}
+
+/* Continuous decorative movement and repeating word hover waves. */
+.word-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.hover-token {
+  display: inline-block;
+  white-space: nowrap;
+}
+.hover-letter {
+  display: inline-block;
+  transform-origin: 50% 75%;
+}
+@keyframes word-wave {
+  0%,
+  65%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  28% {
+    transform: translateY(-0.1em) rotate(-2deg);
+  }
+  45% {
+    transform: translateY(0.025em) rotate(1deg);
+  }
+}
+@keyframes canvas-bob {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -6px;
+  }
+}
+@keyframes symbol-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(2deg);
+  }
+}
+@keyframes dot-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.22);
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hover-word:hover .hover-letter,
+  a:focus-visible .hover-letter {
+    animation: word-wave 1.4s ease-in-out var(--letter-delay, 0ms) infinite;
+  }
+}
+.system-canvas {
+  animation: canvas-bob 7s ease-in-out infinite;
+}
+.skill-symbol {
+  animation: symbol-bob 6s ease-in-out infinite;
+}
+.brand-dot,
+.status-dot {
+  display: inline-block;
+  animation: dot-breathe 3s ease-in-out infinite;
+}
+.canvas-orbits span {
+  animation-duration: 20s;
+}
+.canvas-orbits span:nth-child(2) {
+  animation-duration: 16s;
+}
+.canvas-orbits span:nth-child(3) {
+  animation-duration: 28s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-letter,
+  .system-canvas,
+  .skill-symbol,
+  .brand-dot,
+  .status-dot {
+    animation: none !important;
+  }
+}
+.contact-form .form-row {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+/* Purrweb reference: floating glass lens, gradient depth and responsive previews. */
+.signature-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  margin-bottom: 28px;
+}
+.hero .signature-stage h1.hero-name {
+  margin: 0;
+}
+.hero .signature-stage .hero-name,
+.signature-lens .hero-name {
+  font-size: clamp(58px, 6.7vw, 88px);
+  line-height: 1.07;
+  letter-spacing: -0.06em;
+  font-weight: 600;
+}
+.signature-lens {
+  position: absolute;
+  top: -75px;
+  left: -75px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(4px);
+  box-shadow:
+    0 12px 35px #0002,
+    inset 0 0 25px color-mix(in srgb, var(--accent) 10%, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+.lens-copy {
+  position: absolute;
+  transform: scale(1.32);
+  transform-origin: 0 0;
+  margin: 0;
+}
+.cursor-bubble {
+  position: fixed;
+  z-index: 110;
+  background: color-mix(in srgb, var(--surface) 8%, transparent);
+  backdrop-filter: none;
+  box-shadow: 0 8px 28px #0000000a, inset 0 0 24px color-mix(in srgb, var(--accent) 6%, transparent);
+}
+.cursor-bubble[data-magnifying='true'] {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(4px);
+}
+.cursor-bubble[data-magnifying='false'] .lens-sheen {
+  opacity: 0.3;
+}
+.lens-copy .name-word {
+  animation: none;
+}
+.lens-copy .name-accent {
+  color: var(--accent);
+  text-shadow:
+    2px 0 color-mix(in srgb, #b989ff 35%, transparent),
+    -2px 0 color-mix(in srgb, #52c9d0 35%, transparent);
+}
+.lens-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    130deg,
+    #fff2,
+    transparent 42%,
+    color-mix(in srgb, var(--accent) 6%, transparent)
+  );
+  box-shadow: inset 0 0 0 4px #ffffff05;
+}
+.lens-crosshair {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 7px;
+  height: 1px;
+  background: var(--accent);
+}
+.lens-crosshair::after {
+  content: '';
+  position: absolute;
+  height: 7px;
+  width: 1px;
+  background: inherit;
+  left: 3px;
+  top: -3px;
+}
+.hero-atmosphere i:first-child {
+  width: 620px;
+  height: 620px;
+  right: -80px;
+  top: -80px;
+  background: radial-gradient(ellipse, #4f8caa24, transparent 70%);
+  animation: blue-drift 14s ease-in-out infinite alternate;
+}
+.hero-atmosphere i:nth-child(2) {
+  width: 440px;
+  height: 440px;
+  left: -140px;
+  top: 15%;
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    transparent 70%
+  );
+}
+.hero-atmosphere i:nth-child(3) {
+  width: 300px;
+  height: 300px;
+  right: 30%;
+  top: 45%;
+  background: radial-gradient(ellipse, #9c81c014, transparent 70%);
+}
+.project-follow-cursor {
+  position: absolute;
+  left: -40px;
+  top: -40px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1px;
+  font-size: 12px;
+  font-weight: 600;
+  pointer-events: none;
+  z-index: 4;
+  box-shadow: 0 8px 26px #0002;
+}
+.section-title-sweep {
+  position: relative;
+  width: fit-content;
+}
+.section-title-sweep::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -9px;
+  width: 58px;
+  height: 3px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    color-mix(in srgb, var(--accent) 15%, transparent)
+  );
+  transform-origin: left;
+  animation: heading-rule 5s ease-in-out infinite;
+}
+.section-heading h2 {
+  margin-bottom: 30px;
+}
+.button::after {
+  transition-duration: 0.4s;
+}
+.credential-action:hover svg,
+.text-link:hover svg {
+  rotate: 8deg;
+}
+.hero-bottom svg {
+  animation: signal-flow 2s ease-in-out infinite;
+}
+@keyframes blue-drift {
+  from {
+    transform: translate(-35px, 20px) scale(0.9);
+  }
+  to {
+    transform: translate(35px, -20px) scale(1.1);
+  }
+}
+@keyframes heading-rule {
+  0%,
+  100% {
+    transform: scaleX(0.65);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+}
+@media (max-width: 1100px) {
+  .hero .signature-stage .hero-name,
+  .signature-lens .hero-name {
+    font-size: 70px;
+  }
+}
+@media (max-width: 600px) {
+  .hero .signature-stage .hero-name,
+  .signature-lens .hero-name {
+    font-size: clamp(46px, 13vw, 66px);
+  }
+  .signature-lens {
+    display: none;
+  }
+  .signature-stage {
+    margin-bottom: 26px;
+  }
+  .project-follow-cursor {
+    display: none;
+  }
+  .hero-atmosphere i:first-child {
+    width: 450px;
+    height: 450px;
+    right: -100px;
+    top: 0;
+  }
+}
+@media (pointer: coarse) {
+  .signature-lens,
+  .project-follow-cursor {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signature-lens,
+  .project-follow-cursor {
+    display: none;
+  }
+  .section-title-sweep::after {
+    animation: none;
+  }
+}
+@media (max-width: 600px) {
+  .contact-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Living milestones: independent floating surfaces and a travelling timeline light. */
+.milestone-reveal {
+  min-width: 0;
+  display: flex;
+}
+.milestone-card {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  animation: milestone-drift 7s ease-in-out var(--milestone-delay, 0s) infinite paused;
+}
+.milestone-card[data-moving='true'] {
+  animation-play-state: running;
+}
+.milestone-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.7;
+  pointer-events: none;
+  animation: milestone-shimmer 6s ease-in-out var(--milestone-delay, 0s) infinite paused;
+}
+.milestone-card[data-moving='true']::before {
+  animation-play-state: running;
+}
+.milestone-card::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 240px;
+  height: 240px;
+  right: -100px;
+  top: -100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%);
+  pointer-events: none;
+}
+.leadership-intro.milestone-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 30px;
+  background: var(--surface);
+  align-self: start;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.leadership-intro.milestone-card:hover,
+.achievement-item.milestone-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--line));
+  box-shadow: 0 18px 35px #0000000c;
+}
+.milestone-card .mozilla-mark,
+.milestone-card .award-icon {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--accent);
+}
+.milestone-card .mozilla-mark::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px dashed color-mix(in srgb, var(--accent) 42%, transparent);
+  border-radius: 50%;
+  animation: milestone-orbit 22s linear infinite paused;
+}
+.milestone-card .award-icon svg,
+.milestone-card .mozilla-mark svg {
+  animation: milestone-icon 4.5s ease-in-out var(--milestone-delay, 0s) infinite paused;
+}
+.milestone-card[data-moving='true'] .award-icon svg,
+.milestone-card[data-moving='true'] .mozilla-mark svg,
+.milestone-card[data-moving='true'] .mozilla-mark::after {
+  animation-play-state: running;
+}
+.leadership-timeline {
+  position: relative;
+  align-self: center;
+}
+.timeline-traveller {
+  position: absolute;
+  width: 3px;
+  height: 64px;
+  top: 0;
+  left: -2px;
+  background: linear-gradient(transparent, var(--accent), transparent);
+  animation: timeline-travel 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--accent);
+  border-radius: inherit;
+  animation: milestone-pulse 3s ease-out infinite;
+}
+.leadership-step:last-child .timeline-dot::after {
+  animation-delay: 1.5s;
+}
+.leadership-step h3 .hover-word,
+.milestone-card h3 .hover-word {
+  line-height: inherit;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .milestone-card:hover h3 .hover-letter,
+  .leadership-step:hover h3 .hover-letter {
+    animation: word-wave 1.4s ease-in-out var(--letter-delay, 0ms) infinite;
+  }
+}
+@keyframes milestone-drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+@keyframes milestone-icon {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-3px) rotate(6deg); }
+}
+@keyframes milestone-orbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes milestone-shimmer {
+  0%, 100% { transform: translateX(-100%); opacity: 0; }
+  25%, 75% { opacity: 0.7; }
+  90% { transform: translateX(340%); opacity: 0; }
+}
+@keyframes timeline-travel {
+  0%, 100% { top: 0; opacity: 0; }
+  15%, 80% { opacity: 1; }
+  90% { top: calc(100% - 64px); opacity: 0; }
+}
+@keyframes milestone-pulse {
+  0% { transform: scale(0.7); opacity: 0.6; }
+  85%, 100% { transform: scale(2.1); opacity: 0; }
+}
+@media (max-width: 600px) {
+  .leadership-intro.milestone-card {
+    padding: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .milestone-card,
+  .milestone-card::before,
+  .milestone-card .mozilla-mark::after,
+  .milestone-card .mozilla-mark svg,
+  .milestone-card .award-icon svg,
+  .timeline-traveller,
+  .timeline-dot::after {
+    animation: none !important;
+  }
+  .milestone-card::before,
+  .timeline-traveller,
+  .timeline-dot::after {
+    display: none;
+  }
+}

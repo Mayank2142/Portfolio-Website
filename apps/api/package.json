@@ -1,0 +1,31 @@
+{
+  "name": "@portfolio/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "generate": "prisma generate",
+    "migrate": "prisma migrate deploy",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@portfolio/core": "*",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "express-rate-limit": "^8.2.1",
+    "dotenv": "^17.2.3",
+    "@prisma/client": "^7.0.0",
+    "@prisma/adapter-pg": "^7.0.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "prisma": "^7.0.0",
+    "tsx": "^4.20.6",
+    "tsup": "^8.5.0",
+    "@types/express": "^5.0.5",
+    "@types/node": "^22.19.1",
+    "@types/pg": "^8.15.6"
+  }
+}
