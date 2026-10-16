@@ -2,6 +2,8 @@
 
 A new React portfolio with technical case studies, a project library, internship and leadership timelines, credentials, and a separate Express contact API. The old HTML/CSS implementation is replaced; its recovery archive is outside this repository at `D:/Portfolio WEBSITE/backups/portfolio-before-rebuild-2026-10-14.zip`.
 
+Live portfolio: [mayank-gupta-portfolio-tau.vercel.app](https://mayank-gupta-portfolio-tau.vercel.app/). Vercel serves React and the serverless Express API, with Neon PostgreSQL for contact storage. Contact submissions are saved in preview mode; real email delivery is not configured yet. See [release verification](docs/RELEASE.md).
+
 ## Stack
 
 React, TypeScript, Vite, React Router route pre-rendering, Tailwind CSS, Motion, Express, Zod and PostgreSQL/Prisma. Local development uses Node's SQLite storage so no database account is needed to review the contact workflow. Production requires PostgreSQL.

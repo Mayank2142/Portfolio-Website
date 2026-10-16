@@ -6,9 +6,13 @@ GitHub Pages publishes this repository's root at `https://mayank2142.github.io/P
 
 ## Vercel deployment
 
+Primary public URL: **https://mayank-gupta-portfolio-tau.vercel.app/**. The project is connected to `Mayank2142/Portfolio-Website` on `main`, with Neon PostgreSQL provisioned and connected. Database readiness and a stored contact submission were verified. Email is currently in preview mode.
+
 Import the repository root as an **Other** project. `vercel.json` runs `npm run build:vercel`, serves `apps/web/build/client`, and routes `/api/*` to the serverless Express adapter. React remains the frontend framework; no Next.js is used.
 
 Without `DATABASE_URL`, the frontend contact form opens an email draft and database readiness returns 503. Connect a PostgreSQL database, set `DATABASE_URL` in Vercel and redeploy to run migrations and enable stored submissions. Vercel's production hostname supplies metadata and API origin unless `APP_ORIGIN` is set for a custom domain.
+
+Use `DATABASE_URL_UNPOOLED` for Prisma migrations; the connected Neon integration supplies it alongside the pooled runtime `DATABASE_URL`. The CLI configuration prefers the unpooled connection. Keep both as Vercel secrets. `api/index.js` imports the compiled ESM handler with an explicit `.js` extension; the normal build produces its bundle before Vercel traces the function.
 
 Email defaults to preview mode. Configure the verified Resend sender variables below before enabling real delivery. The function processes up to two outbox jobs with `waitUntil` after successful acceptance. Unlike the standalone Node worker, Vercel does not run a continuous interval. Automatic scheduled retry recovery needs a separately configured scheduled worker; no permanent background process is claimed.
 

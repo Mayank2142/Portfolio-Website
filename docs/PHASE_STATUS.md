@@ -2,14 +2,14 @@
 
 1. **Content, design and architecture:** implemented source inventory, project selection, design tokens and contracts. Existing site archived outside the public build.
 2. **React frontend:** implemented homepage, library, seven case studies, both internships, leadership, credentials, resume, theme, search and screenshot inspection. The design refinement adds a concise introduction and readable typography, staggered entrances, orbiting system signals, reading progress, project hover/filter motion, an interactive four-category skills explorer, and continuous decorative motion. Desktop and narrow-screen browser flows have been verified.
-3. **Backend and interactions:** implemented local durable contact/outbox, production PostgreSQL adapter/migration, validation, retry/idempotency, profile links and project navigation. Live PostgreSQL and external delivery require deployment configuration.
-4. **Verification and replacement:** build/type checks, 14 contact and compiled-route tests, and browser QA are completed for the local version. Old HTML/CSS/pictures are removed after recovery-archive verification. Public deployment is pending hosting/database/email credentials and final origin.
+3. **Backend and interactions:** implemented durable contact/outbox, PostgreSQL adapter/migration, validation, retry/idempotency, profile links and project navigation. Vercel's Express adapter and Neon PostgreSQL are deployed and verified; email delivery remains in preview mode.
+4. **Verification and replacement:** build/type checks, 14 contact and compiled-route tests, and browser QA passed. The site is pushed to GitHub and deployed at `https://mayank-gupta-portfolio-tau.vercel.app/`. Old HTML/CSS/pictures were replaced after recovery-archive verification.
 
 This file is updated after verification. A local preview is not a verified public deployment.
 
-The GitHub repository is pushed. Its GitHub Pages source currently publishes the repository root; a dedicated static React build is prepared for that root. Verify the Pages URL after the Pages workflow completes. This is the frontend deployment; Express contact delivery remains a separate hosting task.
+GitHub Pages is also verified at `https://mayank2142.github.io/Portfolio-Website/`, using a dedicated static React build and an email-draft contact fallback. Vercel is the primary full-stack deployment selected by the user.
 
-Deployment handoff now includes a Dockerfile, a GitHub Actions verification workflow, and `DEPLOYMENT.md`. Docker's engine is not running on this workstation; the image and live PostgreSQL remain unverified. Public hosting and real email delivery still require the final origin, managed database connection, and verified sender/provider credentials. These are the remaining external requirements, not completed deployments.
+Deployment handoff includes a Dockerfile, GitHub Actions verification, Vercel configuration, and `DEPLOYMENT.md`. The Docker image remains unverified. Real email delivery requires verified sender/provider credentials; serverless scheduled retry recovery and field performance measurements remain separate production tasks. See `RELEASE.md` for the verified deployment scope.
 
 Local preview: `http://localhost:3001`. To restart it, run `npm start` with `APP_ORIGIN=http://localhost:3001`. See `VERIFICATION.md` for the checks and production limits.
 
